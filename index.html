@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Milliy Oilaviy Shajara — yangilangan</title>
+<style>
+:root{
+  --emerald:#063C3D;
+  --teal:#075B5C;
+  --accent:#0D7373;
+  --gold:#C69A52;
+  --gold2:#D6B574;
+  --cream:#F7F1E5;
+  --ivory:#FFFDF7;
+  --warm:#FAF8F1;
+  --text:#17363A;
+  --muted:#697979;
+  --line:#ddd3c3;
+  --shadow:0 16px 40px rgba(14,58,61,.12);
+  --soft-shadow:0 7px 18px rgba(68,50,20,.08);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+img{max-width:100%;display:block}
+.hidden{display:none!important}
+a{text-decoration:none;color:inherit}
+.icon{display:inline-flex;width:18px;height:18px;align-items:center;justify-content:center;vertical-align:middle}
+.icon.lg{width:24px;height:24px}
+.icon.xl{width:32px;height:32px}
+.icon svg{width:100%;height:100%}.icon{object-fit:contain}.icon-img{width:18px;height:18px;object-fit:contain;display:inline-block;vertical-align:middle}.icon-img.lg{width:24px;height:24px}.icon-img.xl{width:32px;height:32px}
+.logo-medallion{
+  width:50px;height:50px;border-radius:50%;display:grid;place-items:center;
+  border:2px solid var(--gold);background:linear-gradient(145deg,#fffaf0,#f0e6d2);
+  color:var(--emerald);box-shadow:inset 0 0 0 4px rgba(198,154,82,.12)
+}
+.topbar{
+  position:sticky;top:0;z-index:50;
+  background:rgba(255,253,247,.94);backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(198,154,82,.28);
+}
+.nav{
+  max-width:1500px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;
+}
+.brand{display:flex;align-items:center;gap:12px}
+.brand h1{margin:0;font-family:Georgia,serif;font-size:22px;line-height:1.05}
+.brand small{display:block;color:var(--muted);margin-top:4px}
+.navlinks{display:flex;gap:22px;font-size:14px}
+.navlinks a{font-weight:700}
+.actions{display:flex;align-items:center;gap:10px}
+.btn{
+  border:1px solid rgba(6,60,61,.16);background:var(--ivory);color:var(--text);
+  border-radius:11px;padding:10px 16px;font-weight:700;display:inline-flex;align-items:center;gap:8px
+}
+.btn.primary{background:linear-gradient(135deg,var(--teal),var(--emerald));color:#fff;border-color:transparent;box-shadow:0 9px 18px rgba(6,60,61,.18)}
+.btn.ghost{background:transparent}
+.btn.full{width:100%;justify-content:center}
+.hero{
+  max-width:1500px;margin:0 auto;display:grid;grid-template-columns:1.05fr 1.35fr;overflow:hidden;
+  border-left:10px solid transparent;border-right:10px solid transparent;border-image:linear-gradient(var(--gold),var(--accent)) 1;
+}
+.hero-copy{padding:65px 44px 40px 50px;display:flex;flex-direction:column;justify-content:center}
+.hero-copy h2{margin:0 0 18px;font-family:Georgia,serif;font-size:48px;line-height:1.08;color:#0d3740}
+.hero-copy p{font-size:18px;line-height:1.65;color:#4f6363;max-width:560px}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap}
+.hero-stats{display:flex;gap:34px;flex-wrap:wrap;margin-top:28px}
+.hero-stats strong{display:block;font-size:22px}
+.hero-stats span{font-size:12px;color:var(--muted)}
+.hero-visual{
+  position:relative;min-height:440px;
+  background:
+    radial-gradient(circle at 55% 20%, rgba(214,181,116,.35), transparent 22%),
+    linear-gradient(rgba(247,241,229,.12),rgba(247,241,229,.38)),
+    url('reference.png') center/cover no-repeat;
+}
+.hero-visual::after{
+  content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--cream) 0%, transparent 22%, transparent 100%);
+}
+.feature-strip{
+  max-width:1500px;margin:0 auto;padding:16px 18px;display:grid;grid-template-columns:repeat(8,1fr);gap:12px;
+}
+.feature{
+  background:var(--ivory);border:1px solid #e8dfcf;border-radius:15px;padding:18px 12px;text-align:center;box-shadow:0 6px 18px rgba(74,58,31,.05);
+  transition:.18s;cursor:pointer
+}
+.feature:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.feature .iconwrap{width:42px;height:42px;border-radius:12px;background:#f4efe1;color:var(--gold);display:grid;place-items:center;margin:0 auto 10px}
+.feature b{font-size:13px}
+.app-shell{max-width:1500px;margin:8px auto 28px;padding:10px;background:#e8efec;border-radius:20px;box-shadow:var(--shadow)}
+.workspace{display:grid;grid-template-columns:220px 1fr 340px;min-height:730px;overflow:hidden;border-radius:16px;background:var(--warm)}
+.sidebar{background:linear-gradient(180deg,#063C3D,#082e37);color:#e9f4f3;padding:18px 14px}
+.sidebrand{display:flex;align-items:center;gap:10px;margin-bottom:22px}
+.sidebrand b{font-family:Georgia,serif}
+.menu{display:flex;flex-direction:column;gap:5px}
+.menu button{
+  border:none;background:transparent;color:#d8efec;text-align:left;padding:11px 12px;border-radius:10px;display:flex;gap:10px;align-items:center;font-weight:600
+}
+.menu button.active,.menu button:hover{background:#0b6c6d;color:#fff}
+.center{padding:14px;min-width:0;display:flex;flex-direction:column}
+.toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
+.search{flex:1;min-width:190px}
+.search input,.input,.textarea,.select{
+  width:100%;padding:11px 12px;border:1px solid #d7ddd8;border-radius:10px;background:#fff;color:var(--text)
+}
+.pill,.tool-btn{
+  background:#fff;border:1px solid #dbe1db;border-radius:10px;padding:9px 11px;font-size:12px;display:inline-flex;align-items:center;gap:6px
+}
+.tool-btn{cursor:pointer}
+.family-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:8px 0 12px}
+.family-title{display:flex;align-items:center;gap:12px}
+.avatar-mini{width:48px;height:48px;border-radius:50%;border:2px solid var(--gold);background:#efe3c8;display:grid;place-items:center;color:var(--emerald)}
+.view-tabs{display:flex;gap:6px;flex-wrap:wrap}
+.view-tabs button{
+  border:1px solid #d8ded8;background:#fff;border-radius:8px;padding:8px 10px;font-size:12px;cursor:pointer
+}
+.view-tabs button.active{background:var(--teal);color:#fff}
+.module{display:none}
+.module.active{display:block}
+.canvas-panel{
+  border:1px solid #e4ddce;border-radius:16px;background:
+    linear-gradient(rgba(255,253,247,.95),rgba(255,253,247,.95)),
+    url('reference.png') center/cover no-repeat;
+  background-size:cover;
+  overflow:hidden
+}
+.tree-canvas{min-height:490px;overflow:auto}
+.tree-inner{min-width:900px;padding:24px;transform-origin:top center;transition:transform .18s}
+.empty{
+  min-height:410px;display:grid;place-items:center;text-align:center;padding:30px
+}
+.empty-illustration{
+  width:110px;height:110px;margin:0 auto 14px;border-radius:50%;border:2px solid rgba(198,154,82,.45);display:grid;place-items:center;background:#f6eddd;color:var(--gold)
+}
+.empty h3{font-family:Georgia,serif;font-size:30px;margin:0}
+.empty p{max-width:470px;color:var(--muted);line-height:1.6}
+.level-row{display:flex;justify-content:center;gap:44px;flex-wrap:wrap;margin:16px 0 44px;position:relative}
+.person-card{
+  width:150px;background:#fffaf0;border:1px solid #d8c39b;border-radius:12px;padding:10px;text-align:center;box-shadow:0 8px 18px rgba(70,56,29,.12);position:relative;
+  cursor:pointer;transition:.15s
+}
+.person-card:hover{transform:translateY(-2px)}
+.person-card.selected{outline:3px solid rgba(13,115,115,.22);border-color:var(--accent)}
+.person-card .portrait{
+  width:66px;height:66px;margin:0 auto 8px;border-radius:50%;border:4px double #b18a4a;overflow:hidden;background:#e3e0d8;color:#5f696b;display:grid;place-items:center
+}
+.person-card .portrait img,.profile-photo img,.photo-preview img,.album-card img{width:100%;height:100%;object-fit:cover}
+.person-card b{display:block;font-size:13px;line-height:1.25}
+.person-card small{display:block;font-size:10px;color:#5c6a6a;margin-top:4px}
+.person-card .badge{
+  position:absolute;top:8px;right:8px;font-size:9px;padding:3px 5px;border-radius:6px;background:#f2ebd9;color:#86622a
+}
+.profile{background:#fffdf8;border-left:1px solid #dfd7c8;padding:16px;overflow:auto}
+.profile-header{display:flex;align-items:center;gap:12px}
+.profile-photo{
+  width:82px;height:82px;border-radius:16px;overflow:hidden;border:2px solid #d1bc8c;background:#efede8;color:#62706d;display:grid;place-items:center
+}
+.profile h3{margin:0 0 3px;font-family:Georgia,serif;font-size:24px}
+.tabs{display:flex;gap:4px;border-bottom:1px solid #e6e1d6;margin:16px 0 12px;overflow:auto}
+.tabs button{border:none;background:transparent;padding:10px 10px;font-size:11px;white-space:nowrap;cursor:pointer}
+.tabs button.active{color:var(--teal);border-bottom:2px solid var(--teal);font-weight:700}
+.info-grid{display:grid;grid-template-columns:1fr 1.35fr;gap:8px 12px;font-size:12px}
+.info-grid .k{color:#768281}
+.info-box{background:#fff6e1;border-radius:10px;padding:12px;margin-top:14px;color:#7a5c2c;font-family:Georgia,serif;font-style:italic}
+.panel-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.card{
+  background:var(--ivory);border:1px solid #e7dece;border-radius:16px;padding:16px;box-shadow:var(--soft-shadow)
+}
+.card h3{margin:0 0 12px;font-family:Georgia,serif}
+.card h4{margin:0 0 10px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.list-table{width:100%;border-collapse:collapse;font-size:13px}
+.list-table th,.list-table td{padding:12px 10px;border-bottom:1px solid #ece3d5;text-align:left;vertical-align:middle}
+.list-table th{font-size:12px;color:#697979}
+.person-line{display:flex;align-items:center;gap:10px}
+.tiny-photo{
+  width:42px;height:42px;border-radius:50%;overflow:hidden;border:2px solid #d9c49a;background:#efede8;color:#657371;display:grid;place-items:center
+}
+.photo-preview{
+  width:96px;height:96px;border-radius:16px;border:1px dashed #c9b58a;background:#faf7ef;color:#7f826f;display:grid;place-items:center;overflow:hidden
+}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field.full{grid-column:1/-1}
+.field label{font-size:12px;font-weight:700;color:#48605f}
+.helper{font-size:11px;color:var(--muted)}
+.modal{
+  position:fixed;inset:0;background:rgba(8,28,30,.58);display:grid;place-items:center;z-index:90;padding:20px
+}
+.modal-card{
+  width:min(760px,96vw);max-height:90vh;overflow:auto;background:#fffdf7;border-radius:18px;padding:22px;box-shadow:0 24px 60px rgba(0,0,0,.28)
+}
+.modal-card h3{margin:0 0 16px;font-family:Georgia,serif;font-size:28px}
+.modal-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:18px;flex-wrap:wrap}
+.toast{
+  position:fixed;right:20px;bottom:20px;padding:12px 16px;border-radius:12px;background:#073c3d;color:#fff;z-index:120;box-shadow:var(--shadow)
+}
+.theme-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.theme-card{
+  min-height:110px;border-radius:14px;padding:9px;border:2px solid transparent;position:relative;cursor:pointer;overflow:hidden;color:#fff;font-weight:800;text-shadow:0 1px 2px rgba(0,0,0,.55)
+}
+.theme-card.active{border-color:var(--teal)}
+.theme-card .label{position:absolute;left:10px;bottom:10px;z-index:2}
+.theme-card::before{content:"";position:absolute;inset:0;background:
+  linear-gradient(0deg, rgba(0,0,0,.38), rgba(0,0,0,.1)),
+  url('reference.png') center/cover no-repeat}
+.theme-card.sam::before{filter:hue-rotate(0deg) saturate(1.1)}
+.theme-card.bux::before{filter:sepia(.7) saturate(1.1)}
+.theme-card.xiva::before{filter:hue-rotate(35deg) saturate(.9)}
+.theme-card.atlas::before{filter:hue-rotate(155deg) saturate(1.4)}
+.theme-card.dark::before{filter:brightness(.55) saturate(.8)}
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.stat-card{background:#f8f5eb;border-radius:12px;padding:14px}
+.stat-card strong{display:block;font-size:28px;color:var(--teal);margin-top:8px}
+.simple-chart{display:flex;align-items:flex-end;gap:7px;height:150px;margin-top:10px}
+.simple-chart .bar{flex:1;background:linear-gradient(180deg,#9bd7d2,#2d9790);border-radius:8px 8px 2px 2px;position:relative}
+.simple-chart .bar span{position:absolute;bottom:-22px;left:50%;transform:translateX(-50%);font-size:10px;color:#6a7676}
+.album-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.album-card{background:#fff;border:1px solid #ece2d1;border-radius:14px;overflow:hidden}
+.album-card img{height:180px}
+.album-card .meta{padding:10px}
+.place-list{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.place-card{background:#fbf8f0;border:1px solid #e9dfcf;border-radius:14px;padding:14px}
+.cover-book{
+  display:grid;grid-template-columns:280px 1fr;gap:18px;align-items:stretch
+}
+.book-cover{
+  min-height:360px;border-radius:18px;overflow:hidden;border:1px solid #dcc8a2;background:
+    linear-gradient(rgba(255,251,240,.86),rgba(255,251,240,.9)),
+    url('reference.png') center/cover no-repeat;padding:18px;display:flex;flex-direction:column;justify-content:space-between
+}
+.book-cover .seal{width:88px;height:88px;border-radius:50%;background:#f6ead0;border:2px solid #c69a52;color:#063C3D;display:grid;place-items:center}
+.book-cover h2{margin:0;font-family:Georgia,serif;font-size:28px;color:#17363A}
+.book-cover p{margin:0;color:#5d6968}
+.kbd{background:#f0e8d8;border:1px solid #e3d4bd;border-radius:6px;padding:2px 6px;font-size:12px}
+.section-title{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
+.switch-row{display:flex;gap:8px;flex-wrap:wrap}
+.small-note{font-size:12px;color:var(--muted)}
+.about-block{max-width:1500px;margin:0 auto 34px;padding:0 10px}
+hr.sep{border:none;border-top:1px solid #e7dcc8;margin:18px 0}
+@media(max-width:1180px){
+  .workspace{grid-template-columns:82px 1fr}
+  .profile{display:none}
+  .sidebrand b,.menu .txt{display:none}
+  .navlinks{display:none}
+  .feature-strip{grid-template-columns:repeat(4,1fr)}
+  .theme-grid{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:860px){
+  .hero{grid-template-columns:1fr}
+  .hero-copy{padding:48px 28px}
+  .hero-copy h2{font-size:37px}
+  .hero-visual{min-height:280px}
+  .workspace{grid-template-columns:1fr}
+  .sidebar{display:none}
+  .feature-strip{grid-template-columns:repeat(2,1fr)}
+  .panel-grid,.grid-3,.grid-4,.stat-grid,.album-grid,.place-list,.theme-grid,.cover-book{grid-template-columns:1fr}
+  .form-grid{grid-template-columns:1fr}
+  .nav{padding:12px}
+  .brand small{display:none}
+}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="nav">
+    <div class="brand">
+      <div class="logo-medallion"><img class="icon-img xl" src="assets/icons/tree.svg" alt=""></div>
+      <div>
+        <h1>Milliy Oilaviy Shajara</h1>
+        <small>Avlodlar tarixi — kelajak uchun meros</small>
+      </div>
+    </div>
+    <nav class="navlinks">
+      <a href="#home">Bosh sahifa</a>
+      <a href="#features">Imkoniyatlar</a>
+      <a href="#demo">Namunalar</a>
+      <a href="#about">Biz haqimizda</a>
+    </nav>
+    <div class="actions">
+      <button class="btn ghost" onclick="showToast('UZ / RU / EN arxitekturasi tayyor')">UZ</button>
+      <button class="btn" onclick="openAuth()"><img class="icon-img" src="assets/icons/login.svg" alt="">Kirish</button>
+      <button class="btn primary" onclick="startTree()"><img class="icon-img" src="assets/icons/plus.svg" alt="">Ro‘yxatdan o‘tish</button>
+    </div>
+  </div>
+</header>
+
+<section id="home" class="hero">
+  <div class="hero-copy">
+    <h2>O‘tmishni biling.<br>Bugunni asrang.<br>Kelajak avlodga yetkazing.</h2>
+    <p>Oilangizning tarixini raqamli shaklda saqlang. Shajarani 0 dan yarating, oila a’zolarini bosqichma-bosqich qo‘shing, rasmlar yuklang va kelajak avlodga meros qoldiring.</p>
+    <div class="hero-actions">
+      <button class="btn primary" onclick="startTree()"><img class="icon-img" src="assets/icons/tree.svg" alt="">Shajaramni yaratish</button>
+      <button class="btn" onclick="switchModule('tree');document.getElementById('demo').scrollIntoView({behavior:'smooth'})"><img class="icon-img" src="assets/icons/eye.svg" alt="">Namunani ko‘rish</button>
+    </div>
+    <div class="hero-stats">
+      <div><strong>∞</strong><span>Cheksiz avlod qo‘llab-quvvatlovi</span></div>
+      <div><strong>Foto</strong><span>Shaxs rasmini yuklash mumkin</span></div>
+      <div><strong>Saqlanadi</strong><span>Ma’lumotlar brauzerda saqlanadi</span></div>
+    </div>
+  </div>
+  <div class="hero-visual"></div>
+</section>
+
+<section id="features" class="feature-strip">
+  <div class="feature" onclick="switchModule('tree')"><div class="iconwrap"><img class="icon-img lg" src="assets/icons/tree.svg" alt=""></div><b>Interaktiv shajara</b></div>
+  <div class="feature" onclick="switchModule('album')"><div class="iconwrap"><img class="icon-img lg" src="assets/icons/image.svg" alt=""></div><b>Foto va video arxiv</b></div>
+  <div class="feature" onclick="switchModule('history')"><div class="iconwrap"><img class="icon-img lg" src="assets/icons/book.svg" alt=""></div><b>Oilaviy tarix</b></div>
+  <div class="feature" onclick="switchModule('map')"><div class="iconwrap"><img class="icon-img lg" src="assets/icons/map.svg" alt=""></div><b>Ajdodlar xaritasi</b></div>
+  <div class="feature" onclick="switchModule('stats')"><div class="iconwrap"><img class="icon-img lg" src="assets/icons/chart.svg" alt=""></div><b>Statistika</b></div>
+  <div class="feature" onclick="switchModule('book')"><div class="iconwrap"><img class="icon-img lg" src="assets/icons/archive.svg" alt=""></div><b>Oilaviy kitob</b></div>
+  <div class="feature" onclick="switchModule('design')"><div class="iconwrap"><img class="icon-img lg" src="assets/icons/palette.svg" alt=""></div><b>Dizayn mavzulari</b></div>
+  <div class="feature" onclick="showToast('Hamkorlik moduli keyingi bosqichga tayyorlangan')"><div class="iconwrap"><img class="icon-img lg" src="assets/icons/users.svg" alt=""></div><b>Birgalikda tahrirlash</b></div>
+</section>
+
+<section id="demo" class="app-shell">
+  <div class="workspace">
+    <aside class="sidebar">
+      <div class="sidebrand">
+        <div class="logo-medallion" style="width:40px;height:40px"><img class="icon-img lg" src="assets/icons/tree.svg" alt=""></div>
+        <b>Milliy<br>Oilaviy Shajara</b>
+      </div>
+      <div class="menu" id="sidebarMenu">
+        <button data-module="home" onclick="scrollToHero()"><img class="icon-img" src="assets/icons/home.svg" alt=""><span class="txt">Bosh sahifa</span></button>
+        <button data-module="tree" class="active" onclick="switchModule('tree')"><img class="icon-img" src="assets/icons/tree.svg" alt=""><span class="txt">Mening shajaram</span></button>
+        <button data-module="people" onclick="switchModule('people')"><img class="icon-img" src="assets/icons/users.svg" alt=""><span class="txt">Oila a’zolari</span></button>
+        <button data-module="history" onclick="switchModule('history')"><img class="icon-img" src="assets/icons/book.svg" alt=""><span class="txt">Oila tarixi</span></button>
+        <button data-module="events" onclick="switchModule('events')"><img class="icon-img" src="assets/icons/calendar.svg" alt=""><span class="txt">Voqealar</span></button>
+        <button data-module="album" onclick="switchModule('album')"><img class="icon-img" src="assets/icons/image.svg" alt=""><span class="txt">Oilaviy albom</span></button>
+        <button data-module="map" onclick="switchModule('map')"><img class="icon-img" src="assets/icons/map.svg" alt=""><span class="txt">Ajdodlar xaritasi</span></button>
+        <button data-module="stats" onclick="switchModule('stats')"><img class="icon-img" src="assets/icons/chart.svg" alt=""><span class="txt">Statistika</span></button>
+        <button data-module="design" onclick="switchModule('design')"><img class="icon-img" src="assets/icons/palette.svg" alt=""><span class="txt">Dizayn</span></button>
+        <button data-module="book" onclick="switchModule('book')"><img class="icon-img" src="assets/icons/archive.svg" alt=""><span class="txt">Oilaviy kitob</span></button>
+        <button data-module="settings" onclick="switchModule('settings')"><img class="icon-img" src="assets/icons/settings.svg" alt=""><span class="txt">Sozlamalar</span></button>
+      </div>
+    </aside>
+
+    <main class="center">
+      <!-- TREE MODULE -->
+      <section class="module active" id="module-tree">
+        <div class="toolbar">
+          <div class="search"><input id="searchInput" placeholder="Shajarada qidirish..." oninput="renderAll()"></div>
+          <div class="pill"><img class="icon-img" src="assets/icons/layers.svg" alt="">Avlodlar: <b id="genCount">0</b></div>
+          <button class="tool-btn" onclick="zoom(-.1)">−</button>
+          <button class="tool-btn" id="zoomLabel">100%</button>
+          <button class="tool-btn" onclick="zoom(.1)">+</button>
+          <button class="tool-btn" onclick="fitTree()"><img class="icon-img" src="assets/icons/maximize.svg" alt="">Fit</button>
+          <button class="tool-btn" onclick="openPerson()"><img class="icon-img" src="assets/icons/plus.svg" alt="">Inson qo‘shish</button>
+          <button class="tool-btn" onclick="exportData()"><img class="icon-img" src="assets/icons/download.svg" alt="">Eksport</button>
+        </div>
+
+        <div class="family-head">
+          <div class="family-title">
+            <div class="avatar-mini"><img class="icon-img lg" src="assets/icons/tree.svg" alt=""></div>
+            <div>
+              <b id="treeName">Mening oilam</b>
+              <div class="small-note"><span id="personCount">0</span> kishi • oxirgi yangilanish: hozir</div>
+            </div>
+          </div>
+          <div class="view-tabs">
+            <button class="active" onclick="switchModule('tree',true)">Avlodlar daraxti</button>
+            <button onclick="switchModule('people',true)">Jadval</button>
+            <button onclick="switchModule('events',true)">Timeline</button>
+            <button onclick="switchModule('map',true)">Xarita</button>
+            <button onclick="switchModule('people',true)">Kartalar</button>
+          </div>
+        </div>
+
+        <div class="canvas-panel">
+          <div class="tree-canvas">
+            <div class="tree-inner" id="treeInner"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PEOPLE MODULE -->
+      <section class="module" id="module-people">
+        <div class="section-title">
+          <h3 style="margin:0;font-family:Georgia,serif">Oila a’zolari</h3>
+          <div class="switch-row">
+            <button class="btn primary" onclick="openPerson()"><img class="icon-img" src="assets/icons/plus.svg" alt="">Yangi a’zo</button>
+            <button class="btn" onclick="switchModule('tree')"><img class="icon-img" src="assets/icons/tree.svg" alt="">Shajaraga qaytish</button>
+          </div>
+        </div>
+        <div class="card">
+          <table class="list-table">
+            <thead><tr><th>Inson</th><th>Jinsi</th><th>Tug‘ilgan</th><th>Joy</th><th>Amallar</th></tr></thead>
+            <tbody id="peopleTable"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- HISTORY -->
+      <section class="module" id="module-history">
+        <div class="section-title">
+          <h3 style="margin:0;font-family:Georgia,serif">Oila tarixi</h3>
+          <button class="btn primary" onclick="saveHistory()"><img class="icon-img" src="assets/icons/save.svg" alt="">Saqlash</button>
+        </div>
+        <div class="card">
+          <div class="field full">
+            <label>Oilangiz tarixi</label>
+            <textarea id="historyText" class="textarea" rows="14" placeholder="Oilamizning kelib chiqishi, ajdodlar tarixi, muhim voqealar va nasihatlarni shu yerga yozing..."></textarea>
+          </div>
+          <p class="helper">Bu bo‘lim bosiladi va yozilgan matn brauzerda saqlanadi.</p>
+        </div>
+      </section>
+
+      <!-- EVENTS -->
+      <section class="module" id="module-events">
+        <div class="section-title">
+          <h3 style="margin:0;font-family:Georgia,serif">Voqealar</h3>
+          <button class="btn primary" onclick="openEventModal()"><img class="icon-img" src="assets/icons/plus.svg" alt="">Voqea qo‘shish</button>
+        </div>
+        <div class="card">
+          <div id="eventList"></div>
+        </div>
+      </section>
+
+      <!-- ALBUM -->
+      <section class="module" id="module-album">
+        <div class="section-title">
+          <h3 style="margin:0;font-family:Georgia,serif">Oilaviy albom</h3>
+          <div class="switch-row">
+            <input type="file" id="albumFile" accept="image/*" class="hidden" onchange="previewAlbumUpload()">
+            <button class="btn" onclick="document.getElementById('albumFile').click()"><img class="icon-img" src="assets/icons/image.svg" alt="">Rasm tanlash</button>
+            <button class="btn primary" onclick="saveAlbumItem()"><img class="icon-img" src="assets/icons/upload.svg" alt="">Albonga qo‘shish</button>
+          </div>
+        </div>
+        <div class="panel-grid">
+          <div class="card">
+            <div class="field">
+              <label>Rasm nomi</label>
+              <input id="albumTitle" class="input" placeholder="Masalan: Oilaviy bayram">
+            </div>
+            <div class="field" style="margin-top:12px">
+              <label>Ko‘rinish</label>
+              <div class="photo-preview" id="albumPreview"><img class="icon-img xl" src="assets/icons/image.svg" alt=""></div>
+            </div>
+          </div>
+          <div class="card">
+            <h4>Albomingiz</h4>
+            <div class="album-grid" id="albumGrid"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MAP -->
+      <section class="module" id="module-map">
+        <div class="section-title">
+          <h3 style="margin:0;font-family:Georgia,serif">Ajdodlar xaritasi</h3>
+          <button class="btn" onclick="renderMapPlaces()"><img class="icon-img" src="assets/icons/refresh.svg" alt="">Yangilash</button>
+        </div>
+        <div class="card">
+          <div class="place-list" id="placeList"></div>
+        </div>
+      </section>
+
+      <!-- STATS -->
+      <section class="module" id="module-stats">
+        <div class="section-title">
+          <h3 style="margin:0;font-family:Georgia,serif">Statistika</h3>
+          <button class="btn" onclick="renderStatsOnly()"><img class="icon-img" src="assets/icons/chart.svg" alt="">Qayta hisoblash</button>
+        </div>
+        <div class="card">
+          <div class="stat-grid">
+            <div class="stat-card"><div>Jami oila a’zolari</div><strong id="sTotal">0</strong></div>
+            <div class="stat-card"><div>Erkaklar</div><strong id="sMale">0</strong></div>
+            <div class="stat-card"><div>Ayollar</div><strong id="sFemale">0</strong></div>
+            <div class="stat-card"><div>Avlodlar</div><strong id="sGeneration">0</strong></div>
+          </div>
+          <hr class="sep">
+          <div>
+            <h4>Tug‘ilgan yillar bo‘yicha ko‘rinish</h4>
+            <div class="simple-chart" id="birthChart"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- DESIGN -->
+      <section class="module" id="module-design">
+        <div class="section-title">
+          <h3 style="margin:0;font-family:Georgia,serif">Dizayn mavzulari</h3>
+          <div class="small-note">Hamma kartalar bosiladi.</div>
+        </div>
+        <div class="card">
+          <div class="theme-grid">
+            <div class="theme-card sam active" data-theme="sam" onclick="applyTheme('sam',this)"><div class="label">Samarqand Moviy</div></div>
+            <div class="theme-card bux" data-theme="bux" onclick="applyTheme('bux',this)"><div class="label">Buxoro Zarhal</div></div>
+            <div class="theme-card xiva" data-theme="xiva" onclick="applyTheme('xiva',this)"><div class="label">Xiva Tarixi</div></div>
+            <div class="theme-card atlas" data-theme="atlas" onclick="applyTheme('atlas',this)"><div class="label">Atlas</div></div>
+            <div class="theme-card dark" data-theme="dark" onclick="applyTheme('dark',this)"><div class="label">Qora Premium</div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BOOK -->
+      <section class="module" id="module-book">
+        <div class="section-title">
+          <h3 style="margin:0;font-family:Georgia,serif">Oilaviy kitob</h3>
+          <div class="switch-row">
+            <button class="btn" onclick="window.print()"><img class="icon-img" src="assets/icons/print.svg" alt="">Chop etish</button>
+            <button class="btn primary" onclick="exportData()"><img class="icon-img" src="assets/icons/download.svg" alt="">JSON eksport</button>
+          </div>
+        </div>
+        <div class="card cover-book">
+          <div class="book-cover">
+            <div class="seal"><img class="icon-img xl" src="assets/icons/tree.svg" alt=""></div>
+            <div>
+              <h2 id="bookTitle">Oilaviy kitob</h2>
+              <p>Avlodlar tarixi — kelajak uchun meros</p>
+            </div>
+          </div>
+          <div>
+            <h4>Kitob mazmuni</h4>
+            <ul id="bookSummary" style="line-height:1.8;padding-left:18px"></ul>
+            <p class="small-note">Bu modul ham bosiladi va ma’lumotga qarab yangilanadi.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SETTINGS -->
+      <section class="module" id="module-settings">
+        <div class="section-title">
+          <h3 style="margin:0;font-family:Georgia,serif">Sozlamalar</h3>
+        </div>
+        <div class="panel-grid">
+          <div class="card">
+            <div class="field">
+              <label>Shajara nomi</label>
+              <input id="settingsTreeName" class="input" placeholder="Shajara nomi">
+            </div>
+            <div class="modal-actions" style="justify-content:flex-start">
+              <button class="btn primary" onclick="saveSettings()"><img class="icon-img" src="assets/icons/save.svg" alt="">Saqlash</button>
+            </div>
+          </div>
+          <div class="card">
+            <h4>Ma’lumotni boshqarish</h4>
+            <p class="helper">Agar xohlasangiz, barcha demo ma’lumotlarni tozalashingiz mumkin.</p>
+            <button class="btn" onclick="resetAll()"><img class="icon-img" src="assets/icons/trash.svg" alt="">Barchasini tozalash</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <aside class="profile">
+      <div id="profileEmpty" style="padding:80px 10px;text-align:center;color:var(--muted)">Shajaradagi insonni tanlang.</div>
+      <div id="profileContent" class="hidden">
+        <div class="profile-header">
+          <div class="profile-photo" id="profilePhoto"><img class="icon-img xl" src="assets/icons/user.svg" alt=""></div>
+          <div>
+            <h3 id="profileName"></h3>
+            <div class="small-note" id="profileYears"></div>
+          </div>
+        </div>
+        <div class="tabs">
+          <button class="active">Asosiy ma’lumotlar</button>
+          <button>Biografiya</button>
+          <button>Media</button>
+          <button>Voqealar</button>
+        </div>
+        <div class="info-grid" id="profileInfo"></div>
+        <div class="info-box">“Ajdodlarni eslash — ildizni asrashdir.”</div>
+        <div class="modal-actions" style="justify-content:flex-start">
+          <button class="btn primary" onclick="editSelected()"><img class="icon-img" src="assets/icons/edit.svg" alt="">Tahrirlash</button>
+          <button class="btn" onclick="openRelative()"><img class="icon-img" src="assets/icons/plus.svg" alt="">Qarindosh qo‘shish</button>
+          <button class="btn" onclick="deleteSelected()"><img class="icon-img" src="assets/icons/trash.svg" alt="">O‘chirish</button>
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section id="about" class="about-block">
+  <div class="card">
+    <h3>Sayt haqida</h3>
+    <p class="small-note" style="font-size:14px;line-height:1.7">
+      Bu yangilangan demo versiyada siz aytgan muammolar tuzatildi: ko‘p bo‘limlar bosiladi, menyular ishlaydi,
+      <b>ism va familiya majburiy</b>, qolgan maydonlar ixtiyoriy, va shaxs uchun <b>rasm yuklash</b> imkoni qo‘shildi.
+    </p>
+  </div>
+</section>
+
+<!-- PERSON MODAL -->
+<div id="personModal" class="modal hidden">
+  <div class="modal-card">
+    <h3 id="personModalTitle">Oila a’zosi qo‘shish</h3>
+    <div class="form-grid">
+      <div class="field">
+        <label>Ism *</label>
+        <input id="fName" class="input" placeholder="Masalan: Azizbek">
+      </div>
+      <div class="field">
+        <label>Familiya *</label>
+        <input id="fSurname" class="input" placeholder="Masalan: Abdullayev">
+      </div>
+      <div class="field full">
+        <label>Profil rasmi (ixtiyoriy)</label>
+        <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+          <div class="photo-preview" id="personPhotoPreview"><img class="icon-img xl" src="assets/icons/image.svg" alt=""></div>
+          <div>
+            <input id="fPhoto" type="file" accept="image/*" class="hidden" onchange="previewPersonPhoto()">
+            <button type="button" class="btn" onclick="document.getElementById('fPhoto').click()"><img class="icon-img" src="assets/icons/upload.svg" alt="">Rasm tanlash</button>
+            <div class="helper" style="margin-top:6px">Bu maydon ixtiyoriy.</div>
+          </div>
+        </div>
+      </div>
+      <div class="field">
+        <label>Otasining ismi</label>
+        <input id="fMiddle" class="input">
+      </div>
+      <div class="field">
+        <label>Jinsi</label>
+        <select id="fGender" class="select"><option value="Erkak">Erkak</option><option value="Ayol">Ayol</option></select>
+      </div>
+      <div class="field">
+        <label>Tug‘ilgan yil / sana</label>
+        <input id="fBirth" class="input" placeholder="Masalan: 1998 yoki 12.05.1998">
+      </div>
+      <div class="field">
+        <label>Vafot yili / sana</label>
+        <input id="fDeath" class="input" placeholder="Ixtiyoriy">
+      </div>
+      <div class="field">
+        <label>Tug‘ilgan joy</label>
+        <input id="fPlace" class="input">
+      </div>
+      <div class="field">
+        <label>Kasbi</label>
+        <input id="fJob" class="input">
+      </div>
+      <div class="field full">
+        <label>Biografiya</label>
+        <textarea id="fBio" class="textarea" rows="4" placeholder="Ixtiyoriy ma’lumot"></textarea>
+      </div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn" onclick="closePersonModal()">Bekor qilish</button>
+      <button class="btn primary" onclick="savePerson()"><img class="icon-img" src="assets/icons/save.svg" alt="">Saqlash</button>
+    </div>
+  </div>
+</div>
+
+<!-- RELATION MODAL -->
+<div id="relationModal" class="modal hidden">
+  <div class="modal-card" style="max-width:480px">
+    <h3>Qarindosh qo‘shish</h3>
+    <p class="helper">Tanlangan inson: <b id="relTarget"></b></p>
+    <div class="field">
+      <label>Qarindoshlik turi</label>
+      <select id="relType" class="select">
+        <option value="father">Ota</option>
+        <option value="mother">Ona</option>
+        <option value="spouse">Turmush o‘rtog‘i</option>
+        <option value="child">Farzand</option>
+        <option value="sibling">Aka/Uka yoki Opa/Singil</option>
+      </select>
+    </div>
+    <div class="modal-actions">
+      <button class="btn" onclick="hideModal('relationModal')">Bekor qilish</button>
+      <button class="btn primary" onclick="createRelative()"><img class="icon-img" src="assets/icons/plus.svg" alt="">Davom etish</button>
+    </div>
+  </div>
+</div>
+
+<!-- EVENT MODAL -->
+<div id="eventModal" class="modal hidden">
+  <div class="modal-card" style="max-width:520px">
+    <h3>Voqea qo‘shish</h3>
+    <div class="field"><label>Voqea nomi</label><input id="evTitle" class="input" placeholder="Masalan: To‘y marosimi"></div>
+    <div class="field" style="margin-top:10px"><label>Sana</label><input id="evDate" class="input" placeholder="Masalan: 12.06.2008"></div>
+    <div class="field" style="margin-top:10px"><label>Tavsif</label><textarea id="evDesc" class="textarea" rows="4"></textarea></div>
+    <div class="modal-actions">
+      <button class="btn" onclick="hideModal('eventModal')">Bekor qilish</button>
+      <button class="btn primary" onclick="saveEvent()"><img class="icon-img" src="assets/icons/save.svg" alt="">Saqlash</button>
+    </div>
+  </div>
+</div>
+
+<!-- AUTH MODAL -->
+<div id="authModal" class="modal hidden">
+  <div class="modal-card" style="max-width:420px">
+    <h3>Kirish / Ro‘yxatdan o‘tish</h3>
+    <div class="field"><label>Email</label><input id="authEmail" class="input" type="email" placeholder="email@example.com"></div>
+    <div class="field" style="margin-top:10px"><label>Parol</label><input id="authPass" class="input" type="password"></div>
+    <p class="helper">Demo versiyada hisob ma’lumoti faqat shu brauzerda saqlanadi.</p>
+    <div class="modal-actions">
+      <button class="btn" onclick="hideModal('authModal')">Bekor</button>
+      <button class="btn primary" onclick="demoLogin()"><img class="icon-img" src="assets/icons/login.svg" alt="">Kirish</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const ICONS = {
+  tree:`<svg viewBox="0 0 24 24"><path d="M12 22v-4"/><path d="M8 18h8"/><path d="M10 18c0-2-1-3-3-4-2-1-3-2-3-4a4 4 0 0 1 4-4c.4-2.6 2.6-4 5-4 2.7 0 5 2.1 5 4.8a4.2 4.2 0 0 1 2 3.6c0 2.1-1.3 3.2-3 4.1-2 1-3 2.2-3 4.5"/></svg>`,
+  login:`<svg viewBox="0 0 24 24"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><path d="M10 17l5-5-5-5"/><path d="M15 12H3"/></svg>`,
+  plus:`<svg viewBox="0 0 24 24"><path d="M12 5v14"/><path d="M5 12h14"/></svg>`,
+  eye:`<svg viewBox="0 0 24 24"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6-10-6-10-6z"/><circle cx="12" cy="12" r="3"/></svg>`,
+  image:`<svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 15l-5-5-7 7-3-3-3 3"/></svg>`,
+  book:`<svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5V4.5A2.5 2.5 0 0 1 6.5 2z"/></svg>`,
+  map:`<svg viewBox="0 0 24 24"><path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2V6z"/><path d="M9 4v14"/><path d="M15 6v14"/></svg>`,
+  chart:`<svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><rect x="7" y="10" width="3" height="6"/><rect x="12" y="7" width="3" height="9"/><rect x="17" y="5" width="3" height="11"/></svg>`,
+  archive:`<svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="4" rx="1"/><path d="M5 8h14v11a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8z"/><path d="M10 12h4"/></svg>`,
+  palette:`<svg viewBox="0 0 24 24"><path d="M12 3c-5 0-9 3.6-9 8.3 0 3.5 2.8 6.2 6.2 6.2H11a1.5 1.5 0 0 1 0 3h1c5 0 9-3.8 9-8.5C21 7 17 3 12 3z"/><circle cx="7.5" cy="10.5" r="1"/><circle cx="10.5" cy="7.5" r="1"/><circle cx="14.5" cy="7.5" r="1"/><circle cx="16.5" cy="11" r="1"/></svg>`,
+  users:`<svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="9.5" cy="7" r="4"/><path d="M20 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,
+  home:`<svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>`,
+  calendar:`<svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>`,
+  settings:`<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.87l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.7 1.7 0 0 0-1.87-.34 1.7 1.7 0 0 0-1.04 1.55V21a2 2 0 1 1-4 0v-.09A1.7 1.7 0 0 0 8.96 19.36a1.7 1.7 0 0 0-1.87.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.7 1.7 0 0 0 4.6 15a1.7 1.7 0 0 0-1.55-1.04H3a2 2 0 1 1 0-4h.09A1.7 1.7 0 0 0 4.64 8.4a1.7 1.7 0 0 0-.34-1.87l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.7 1.7 0 0 0 8.99 4.64 1.7 1.7 0 0 0 10.04 3.1V3a2 2 0 1 1 4 0v.09a1.7 1.7 0 0 0 1.04 1.55 1.7 1.7 0 0 0 1.87-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.7 1.7 0 0 0 19.36 8.99c.13.5.52.91 1.04 1.04H21a2 2 0 1 1 0 4h-.09A1.7 1.7 0 0 0 19.4 15z"/></svg>`,
+  user:`<svg viewBox="0 0 24 24"><path d="M20 21a8 8 0 0 0-16 0"/><circle cx="12" cy="8" r="4"/></svg>`,
+  save:`<svg viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8"/><path d="M7 3v5h8"/></svg>`,
+  upload:`<svg viewBox="0 0 24 24"><path d="M12 16V4"/><path d="M7 9l5-5 5 5"/><path d="M20 16v3a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-3"/></svg>`,
+  edit:`<svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>`,
+  trash:`<svg viewBox="0 0 24 24"><path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/></svg>`,
+  layers:`<svg viewBox="0 0 24 24"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="m2 12 10 5 10-5"/><path d="m2 17 10 5 10-5"/></svg>`,
+  maximize:`<svg viewBox="0 0 24 24"><path d="M8 3H3v5"/><path d="M21 8V3h-5"/><path d="M3 16v5h5"/><path d="M16 21h5v-5"/></svg>`,
+  download:`<svg viewBox="0 0 24 24"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>`,
+  print:`<svg viewBox="0 0 24 24"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>`,
+  refresh:`<svg viewBox="0 0 24 24"><path d="M21 2v6h-6"/><path d="M3 22v-6h6"/><path d="M20.49 9A9 9 0 0 0 5 5.5L3 8"/><path d="M3.51 15A9 9 0 0 0 19 18.5L21 16"/></svg>`
+};
+
+function renderIcons(root=document){
+  root.querySelectorAll('[data-icon]').forEach(el=>{
+    const name=el.getAttribute('data-icon');
+    const size = el.classList.contains('xl') ? ' xl' : (el.classList.contains('lg') ? ' lg' : '');
+    el.outerHTML = `<img class="icon-img${size}" src="assets/icons/${name}.svg" alt="">`;
+  });
+}
+
+const KEY='milliyShajaraDataV3';
+let data = JSON.parse(localStorage.getItem(KEY) || 'null') || {
+  treeName:'Mening oilam',
+  theme:'sam',
+  activeModule:'tree',
+  people:[],
+  selected:null,
+  historyText:'',
+  events:[],
+  album:[]
+};
+let editingId = null;
+let pendingRelation = null;
+let zoomLevel = 1;
+let albumTempImage = null;
+
+function save(){ localStorage.setItem(KEY, JSON.stringify(data)); }
+function showToast(msg){
+  const t=document.createElement('div'); t.className='toast'; t.textContent=msg; document.body.appendChild(t);
+  setTimeout(()=>t.remove(), 2600);
+}
+function hideModal(id){ document.getElementById(id).classList.add('hidden'); }
+function openAuth(){ document.getElementById('authModal').classList.remove('hidden'); renderIcons(document.getElementById('authModal')); }
+function demoLogin(){
+  localStorage.setItem('milliyAuth', JSON.stringify({email:document.getElementById('authEmail').value || 'demo@local'}));
+  hideModal('authModal'); showToast("Kirish muvaffaqiyatli (demo).");
+}
+function scrollToHero(){ document.getElementById('home').scrollIntoView({behavior:'smooth'}); }
+function startTree(){
+  if(!data.treeName || data.treeName==='Mening oilam'){
+    const name = prompt("Shajara nomi:", "Abdullayevlar oilasi");
+    if(name) data.treeName = name.trim();
+  }
+  save();
+  document.getElementById('demo').scrollIntoView({behavior:'smooth'});
+  switchModule('tree');
+  if(data.people.length===0) setTimeout(()=>openPerson(),300);
+  renderAll();
+}
+function switchModule(module, keepScroll=false){
+  data.activeModule = module;
+  save();
+  document.querySelectorAll('.module').forEach(m=>m.classList.remove('active'));
+  const target = document.getElementById('module-'+module);
+  if(target) target.classList.add('active');
+  document.querySelectorAll('#sidebarMenu button').forEach(btn=>btn.classList.toggle('active', btn.dataset.module===module));
+  if(!keepScroll) document.getElementById('demo').scrollIntoView({behavior:'smooth', block:'start'});
+  renderAll();
+}
+function fitTree(){ zoomLevel=.9; document.getElementById('zoomLabel').textContent='90%'; renderTree(); }
+function zoom(delta){
+  zoomLevel = Math.min(1.7, Math.max(.5, zoomLevel + delta));
+  document.getElementById('zoomLabel').textContent = Math.round(zoomLevel*100)+'%';
+  renderTree();
+}
+function getSelected(){ return data.people.find(p => p.id === data.selected); }
+function selectPerson(id){ data.selected = id; save(); renderAll(); }
+
+function openPerson(person=null){
+  editingId = person?.id || null;
+  const modal = document.getElementById('personModal');
+  document.getElementById('personModalTitle').textContent = person ? "Oila a’zosini tahrirlash" : "Oila a’zosi qo‘shish";
+  document.getElementById('fName').value = person?.name || '';
+  document.getElementById('fSurname').value = person?.surname || '';
+  document.getElementById('fMiddle').value = person?.middle || '';
+  document.getElementById('fGender').value = person?.gender || 'Erkak';
+  document.getElementById('fBirth').value = person?.birth || '';
+  document.getElementById('fDeath').value = person?.death || '';
+  document.getElementById('fPlace').value = person?.place || '';
+  document.getElementById('fJob').value = person?.job || '';
+  document.getElementById('fBio').value = person?.bio || '';
+  document.getElementById('fPhoto').value = '';
+  setPhotoPreview('personPhotoPreview', person?.photoData || null);
+  modal.classList.remove('hidden');
+  renderIcons(modal);
+}
+function closePersonModal(){ hideModal('personModal'); editingId = null; pendingRelation = null; }
+function previewPersonPhoto(){
+  const file = document.getElementById('fPhoto').files[0];
+  if(!file) return;
+  fileToDataURL(file).then(url=>setPhotoPreview('personPhotoPreview', url));
+}
+function setPhotoPreview(id, url){
+  const el = document.getElementById(id);
+  if(url){
+    el.innerHTML = `<img src="${url}" alt="">`;
+  }else{
+    el.innerHTML = `<img class="icon-img xl" src="assets/icons/image.svg" alt="">`;
+    renderIcons(el);
+  }
+}
+function fileToDataURL(file){
+  return new Promise((resolve,reject)=>{
+    const reader = new FileReader();
+    reader.onload = ()=>resolve(reader.result);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+async function savePerson(){
+  const name = document.getElementById('fName').value.trim();
+  const surname = document.getElementById('fSurname').value.trim();
+  if(!name || !surname){
+    showToast("Ism va Familiya majburiy.");
+    return;
+  }
+  const existing = editingId ? data.people.find(p=>p.id===editingId) : null;
+  let photoData = existing?.photoData || '';
+  const file = document.getElementById('fPhoto').files[0];
+  if(file) photoData = await fileToDataURL(file);
+
+  const obj = {
+    id: editingId || crypto.randomUUID(),
+    name, surname,
+    middle:document.getElementById('fMiddle').value.trim(),
+    gender:document.getElementById('fGender').value,
+    birth:document.getElementById('fBirth').value.trim(),
+    death:document.getElementById('fDeath').value.trim(),
+    place:document.getElementById('fPlace').value.trim(),
+    job:document.getElementById('fJob').value.trim(),
+    bio:document.getElementById('fBio').value.trim(),
+    photoData,
+    parentId: existing?.parentId ?? null,
+    relation: existing?.relation ?? 'root'
+  };
+
+  if(editingId){
+    const idx = data.people.findIndex(p=>p.id===editingId);
+    data.people[idx] = obj;
+  }else{
+    if(pendingRelation){
+      const targetPerson = data.people.find(p=>p.id===pendingRelation.target);
+      if(pendingRelation.type === 'child'){
+        obj.parentId = pendingRelation.target;
+        obj.relation = 'child';
+      }else if(pendingRelation.type === 'father' || pendingRelation.type === 'mother'){
+        obj.parentId = targetPerson?.parentId || null;
+        obj.relation = pendingRelation.type;
+      }else if(pendingRelation.type === 'sibling'){
+        obj.parentId = targetPerson?.parentId || null;
+        obj.relation = 'sibling';
+      }else if(pendingRelation.type === 'spouse'){
+        obj.parentId = targetPerson?.parentId || null;
+        obj.relation = 'spouse';
+      }
+      data.people.push(obj);
+      if(pendingRelation.type === 'father' || pendingRelation.type === 'mother'){
+        if(targetPerson) targetPerson.parentId = obj.id;
+      }
+      pendingRelation = null;
+    }else{
+      data.people.push(obj);
+    }
+    data.selected = obj.id;
+  }
+  save();
+  closePersonModal();
+  renderAll();
+  showToast(editingId ? "Ma’lumotlar saqlandi." : "Oila a’zosi muvaffaqiyatli qo‘shildi.");
+}
+function openRelative(){
+  const p = getSelected();
+  if(!p){ showToast("Avval insonni tanlang."); return; }
+  document.getElementById('relTarget').textContent = `${p.name} ${p.surname}`;
+  document.getElementById('relationModal').classList.remove('hidden');
+  renderIcons(document.getElementById('relationModal'));
+}
+function createRelative(){
+  const p = getSelected();
+  if(!p){ showToast("Avval insonni tanlang."); return; }
+  pendingRelation = { target:p.id, type:document.getElementById('relType').value };
+  hideModal('relationModal');
+  openPerson();
+}
+function editSelected(){ const p = getSelected(); if(p) openPerson(p); else showToast("Tanlangan inson yo‘q."); }
+function deleteSelected(){
+  const p = getSelected();
+  if(!p){ showToast("Avval insonni tanlang."); return; }
+  if(confirm(`"${p.name} ${p.surname}" ni o‘chirmoqchimisiz?`)){
+    data.people = data.people.filter(x=>x.id!==p.id).map(x=>x.parentId===p.id?{...x,parentId:null,relation:'root'}:x);
+    data.selected = null;
+    save(); renderAll(); showToast("Inson o‘chirildi.");
+  }
+}
+function renderTree(){
+  document.getElementById('treeName').textContent = data.treeName || 'Mening oilam';
+  document.getElementById('bookTitle').textContent = (data.treeName || 'Oilaviy kitob').toUpperCase();
+  document.getElementById('personCount').textContent = data.people.length;
+  document.getElementById('settingsTreeName').value = data.treeName || '';
+  const tree = document.getElementById('treeInner');
+  tree.innerHTML = '';
+  tree.style.transform = `scale(${zoomLevel})`;
+
+  const q = document.getElementById('searchInput').value.trim().toLowerCase();
+  const filtered = data.people.filter(p => (`${p.name} ${p.surname} ${p.place} ${p.birth}`).toLowerCase().includes(q));
+
+  if(filtered.length===0 && data.people.length===0){
+    tree.innerHTML = `<div class="empty">
+      <div>
+        <div class="empty-illustration"><img class="icon-img xl" src="assets/icons/tree.svg" alt=""></div>
+        <h3>Shajarangiz hali bo‘sh</h3>
+        <p>Har bir buyuk shajara birinchi insondan boshlanadi. Birinchi oila a’zosini qo‘shing va daraxtingizni kengaytiring.</p>
+        <button class="btn primary" onclick="openPerson()"><img class="icon-img" src="assets/icons/plus.svg" alt="">Birinchi oila a’zosini qo‘shish</button>
+      </div>
+    </div>`;
+    renderIcons(tree);
+  }else if(filtered.length===0){
+    tree.innerHTML = `<div class="empty"><div><h3>Natija topilmadi</h3><p>Qidiruv bo‘yicha mos inson topilmadi.</p></div></div>`;
+  }else{
+    const levels = buildLevels(filtered);
+    Object.keys(levels).sort((a,b)=>+a-+b).forEach(level=>{
+      const row = document.createElement('div');
+      row.className = 'level-row';
+      levels[level].forEach(person=>row.appendChild(personCard(person)));
+      tree.appendChild(row);
+    });
+  }
+  document.getElementById('genCount').textContent = Math.max(calcGenerations(), 0);
+}
+function buildLevels(people){
+  const visibleIds = new Set(people.map(p=>p.id));
+  const all = new Map(data.people.map(p=>[p.id,p]));
+  const levels = {};
+  function depth(person, seen=new Set()){
+    if(!person.parentId || !all.has(person.parentId) || seen.has(person.id)) return 0;
+    seen.add(person.id);
+    return depth(all.get(person.parentId), seen) + 1;
+  }
+  people.forEach(p=>{
+    const d = depth(p);
+    (levels[d] ??= []).push(p);
+  });
+  return levels;
+}
+function personCard(p){
+  const el = document.createElement('div');
+  el.className = 'person-card' + (data.selected===p.id ? ' selected' : '');
+  el.onclick = ()=>selectPerson(p.id);
+  const years = [p.birth || '?', p.death].filter(Boolean).join(' – ');
+  el.innerHTML = `
+    <div class="badge">${p.gender}</div>
+    <div class="portrait">${p.photoData ? `<img src="${p.photoData}" alt="">` : `<img class="icon-img lg" src="assets/icons/user.svg" alt="">`}</div>
+    <b>${escapeHtml(p.name)} ${escapeHtml(p.surname)}</b>
+    <small>${escapeHtml(years || 'Ma’lumot yo‘q')}</small>
+  `;
+  renderIcons(el);
+  return el;
+}
+function renderProfile(){
+  const p = getSelected();
+  const empty = document.getElementById('profileEmpty');
+  const content = document.getElementById('profileContent');
+  if(!p){
+    empty.classList.remove('hidden');
+    content.classList.add('hidden');
+    return;
+  }
+  empty.classList.add('hidden');
+  content.classList.remove('hidden');
+  const photoWrap = document.getElementById('profilePhoto');
+  photoWrap.innerHTML = p.photoData ? `<img src="${p.photoData}" alt="">` : `<img class="icon-img xl" src="assets/icons/user.svg" alt="">`;
+  renderIcons(photoWrap);
+  document.getElementById('profileName').textContent = `${p.name} ${p.surname}`;
+  document.getElementById('profileYears').textContent = [p.birth || 'Noma’lum', p.death].filter(Boolean).join(' – ');
+  const info = [
+    ['Ism', p.name],
+    ['Familiya', p.surname],
+    ['Otasining ismi', p.middle || '—'],
+    ['Jinsi', p.gender || '—'],
+    ['Tug‘ilgan sana', p.birth || 'Noma’lum'],
+    ['Tug‘ilgan joy', p.place || '—'],
+    ['Kasbi', p.job || '—'],
+    ['Tarjimai hol', p.bio || '—']
+  ];
+  document.getElementById('profileInfo').innerHTML = info.map(([k,v])=>`<div class="k">${escapeHtml(k)}</div><div>${escapeHtml(v)}</div>`).join('');
+}
+function renderPeopleTable(){
+  const body = document.getElementById('peopleTable');
+  if(data.people.length===0){
+    body.innerHTML = `<tr><td colspan="5" class="small-note">Hali oila a’zolari kiritilmagan.</td></tr>`;
+    return;
+  }
+  body.innerHTML = data.people.map(p=>`
+    <tr>
+      <td>
+        <div class="person-line">
+          <div class="tiny-photo">${p.photoData ? `<img src="${p.photoData}" alt="">` : `<img class="icon-img" src="assets/icons/user.svg" alt="">`}</div>
+          <div><b>${escapeHtml(p.name)} ${escapeHtml(p.surname)}</b><div class="small-note">${escapeHtml(p.job || '')}</div></div>
+        </div>
+      </td>
+      <td>${escapeHtml(p.gender || '—')}</td>
+      <td>${escapeHtml(p.birth || '—')}</td>
+      <td>${escapeHtml(p.place || '—')}</td>
+      <td>
+        <button class="btn ghost" onclick="selectPerson('${p.id}');switchModule('tree',true)">Ko‘rish</button>
+        <button class="btn ghost" onclick="openPersonById('${p.id}')">Tahrirlash</button>
+      </td>
+    </tr>
+  `).join('');
+  renderIcons(body);
+}
+function openPersonById(id){
+  const p = data.people.find(x=>x.id===id);
+  if(p) openPerson(p);
+}
+function saveHistory(){
+  data.historyText = document.getElementById('historyText').value;
+  save();
+  showToast("Oilaviy tarix saqlandi.");
+}
+function renderHistory(){
+  document.getElementById('historyText').value = data.historyText || '';
+}
+function openEventModal(){
+  document.getElementById('evTitle').value = '';
+  document.getElementById('evDate').value = '';
+  document.getElementById('evDesc').value = '';
+  document.getElementById('eventModal').classList.remove('hidden');
+  renderIcons(document.getElementById('eventModal'));
+}
+function saveEvent(){
+  const title = document.getElementById('evTitle').value.trim();
+  if(!title){ showToast("Voqea nomini kiriting."); return; }
+  data.events.unshift({
+    id: crypto.randomUUID(),
+    title,
+    date: document.getElementById('evDate').value.trim(),
+    desc: document.getElementById('evDesc').value.trim()
+  });
+  save();
+  hideModal('eventModal');
+  renderEvents();
+  showToast("Voqea qo‘shildi.");
+}
+function renderEvents(){
+  const list = document.getElementById('eventList');
+  if(data.events.length===0){
+    list.innerHTML = `<div class="small-note">Hali voqealar kiritilmagan.</div>`;
+    return;
+  }
+  list.innerHTML = data.events.map(ev=>`
+    <div class="card" style="margin-bottom:10px;padding:14px;background:#fff">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:10px">
+        <div><b>${escapeHtml(ev.title)}</b><div class="small-note">${escapeHtml(ev.date || 'Sana ko‘rsatilmagan')}</div></div>
+        <button class="btn ghost" onclick="deleteEvent('${ev.id}')"><img class="icon-img" src="assets/icons/trash.svg" alt="">O‘chirish</button>
+      </div>
+      <div style="margin-top:8px;line-height:1.6">${escapeHtml(ev.desc || 'Tavsif yo‘q')}</div>
+    </div>
+  `).join('');
+  renderIcons(list);
+}
+function deleteEvent(id){
+  data.events = data.events.filter(x=>x.id!==id);
+  save(); renderEvents(); showToast("Voqea o‘chirildi.");
+}
+function previewAlbumUpload(){
+  const file = document.getElementById('albumFile').files[0];
+  if(!file) return;
+  fileToDataURL(file).then(url=>{
+    albumTempImage = url;
+    document.getElementById('albumPreview').innerHTML = `<img src="${url}" alt="">`;
+  });
+}
+function saveAlbumItem(){
+  const title = document.getElementById('albumTitle').value.trim() || 'Oilaviy rasm';
+  if(!albumTempImage){ showToast("Avval rasm tanlang."); return; }
+  data.album.unshift({id:crypto.randomUUID(), title, image:albumTempImage});
+  save();
+  document.getElementById('albumTitle').value = '';
+  document.getElementById('albumFile').value = '';
+  albumTempImage = null;
+  setPhotoPreview('albumPreview', null);
+  renderAlbum();
+  showToast("Rasm albomga qo‘shildi.");
+}
+function renderAlbum(){
+  const grid = document.getElementById('albumGrid');
+  if(data.album.length===0){
+    grid.innerHTML = `<div class="small-note">Albomingiz hozircha bo‘sh.</div>`;
+    return;
+  }
+  grid.innerHTML = data.album.map(a=>`
+    <div class="album-card">
+      <img src="${a.image}" alt="">
+      <div class="meta">
+        <b>${escapeHtml(a.title)}</b>
+        <div style="margin-top:8px"><button class="btn ghost" onclick="deleteAlbumItem('${a.id}')">O‘chirish</button></div>
+      </div>
+    </div>
+  `).join('');
+}
+function deleteAlbumItem(id){
+  data.album = data.album.filter(x=>x.id!==id);
+  save(); renderAlbum(); showToast("Rasm o‘chirildi.");
+}
+function renderMapPlaces(){
+  const list = document.getElementById('placeList');
+  const map = {};
+  data.people.forEach(p=>{
+    const place = (p.place || '').trim();
+    if(!place) return;
+    (map[place] ??= []).push(p);
+  });
+  const entries = Object.entries(map);
+  if(entries.length===0){
+    list.innerHTML = `<div class="small-note">Joy ma’lumotlari hali kiritilmagan.</div>`;
+    return;
+  }
+  list.innerHTML = entries.map(([place, people])=>`
+    <div class="place-card">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><img class="icon-img" src="assets/icons/map.svg" alt=""><b>${escapeHtml(place)}</b></div>
+      <div class="small-note">${people.length} ta qarindosh</div>
+      <div style="margin-top:8px;font-size:13px;line-height:1.6">${people.map(p=>escapeHtml(p.name+' '+p.surname)).join(', ')}</div>
+    </div>
+  `).join('');
+  renderIcons(list);
+}
+function calcGenerations(){
+  if(data.people.length===0) return 0;
+  const levels = buildLevels(data.people);
+  return Object.keys(levels).length;
+}
+function renderStatsOnly(){
+  const total = data.people.length;
+  const male = data.people.filter(p=>p.gender==='Erkak').length;
+  const female = data.people.filter(p=>p.gender==='Ayol').length;
+  const generations = calcGenerations();
+  document.getElementById('sTotal').textContent = total;
+  document.getElementById('sMale').textContent = male;
+  document.getElementById('sFemale').textContent = female;
+  document.getElementById('sGeneration').textContent = generations;
+
+  const birthGroups = {};
+  data.people.forEach(p=>{
+    const y = (p.birth || '').match(/\d{4}/)?.[0];
+    if(y){
+      const decade = y.slice(0,3)+'0';
+      birthGroups[decade] = (birthGroups[decade] || 0) + 1;
+    }
+  });
+  const entries = Object.entries(birthGroups).sort();
+  const chart = document.getElementById('birthChart');
+  if(entries.length===0){
+    chart.innerHTML = `<div class="small-note">Grafik uchun tug‘ilgan yil ma’lumotlari yetarli emas.</div>`;
+    return;
+  }
+  const max = Math.max(...entries.map(x=>x[1]), 1);
+  chart.innerHTML = entries.map(([dec,count])=>{
+    const h = Math.max(18, Math.round((count/max)*120));
+    return `<div class="bar" style="height:${h}px"><span>${dec}</span></div>`;
+  }).join('');
+}
+function renderBook(){
+  const summary = document.getElementById('bookSummary');
+  summary.innerHTML = `
+    <li><b>Shajara nomi:</b> ${escapeHtml(data.treeName || '—')}</li>
+    <li><b>Jami a’zolar:</b> ${data.people.length}</li>
+    <li><b>Avlodlar:</b> ${calcGenerations()}</li>
+    <li><b>Voqealar:</b> ${data.events.length}</li>
+    <li><b>Albom rasmlari:</b> ${data.album.length}</li>
+    <li><b>Tarix bo‘limi:</b> ${data.historyText ? 'To‘ldirilgan' : 'Bo‘sh'}</li>
+  `;
+}
+function saveSettings(){
+  const name = document.getElementById('settingsTreeName').value.trim();
+  if(!name){ showToast("Shajara nomini kiriting."); return; }
+  data.treeName = name;
+  save(); renderAll(); showToast("Sozlamalar saqlandi.");
+}
+function resetAll(){
+  if(confirm("Barcha saqlangan ma’lumotlarni tozalamoqchimisiz?")){
+    localStorage.removeItem(KEY);
+    location.reload();
+  }
+}
+function applyTheme(theme, el){
+  data.theme = theme;
+  save();
+  document.querySelectorAll('.theme-card').forEach(t=>t.classList.toggle('active', t.dataset.theme===theme));
+  const root = document.documentElement;
+  const map = {
+    sam:['#063C3D','#075B5C','#0D7373','#C69A52','#F7F1E5'],
+    bux:['#4A2D16','#6C411B','#8C5A2A','#D6A65E','#F4E6D2'],
+    xiva:['#32483e','#4f7f78','#5a9a94','#c79657','#f3ebdb'],
+    atlas:['#5c1f35','#8d2d52','#20808f','#e3b24c','#fff0e3'],
+    dark:['#061F20','#0B3233','#0C7775','#D0A75D','#0A1818']
+  };
+  const c = map[theme];
+  root.style.setProperty('--emerald', c[0]);
+  root.style.setProperty('--teal', c[1]);
+  root.style.setProperty('--accent', c[2]);
+  root.style.setProperty('--gold', c[3]);
+  root.style.setProperty('--cream', c[4]);
+  showToast("Dizayn yangilandi.");
+}
+function exportData(){
+  const blob = new Blob([JSON.stringify(data,null,2)], {type:'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'milliy-shajara.json';
+  a.click();
+  URL.revokeObjectURL(a.href);
+  showToast("Ma’lumot JSON formatda eksport qilindi.");
+}
+function escapeHtml(str){
+  return String(str || '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+}
+function renderAll(){
+  renderTree();
+  renderProfile();
+  renderPeopleTable();
+  renderHistory();
+  renderEvents();
+  renderAlbum();
+  renderMapPlaces();
+  renderStatsOnly();
+  renderBook();
+  document.getElementById('treeName').textContent = data.treeName || 'Mening oilam';
+  document.getElementById('bookTitle').textContent = (data.treeName || 'Oilaviy kitob').toUpperCase();
+}
+window.addEventListener('load', ()=>{
+  renderIcons();
+  const activeTheme = document.querySelector(`.theme-card[data-theme="${data.theme || 'sam'}"]`);
+  if(activeTheme) applyTheme(data.theme || 'sam', activeTheme);
+  switchModule(data.activeModule || 'tree', true);
+  renderAll();
+});
+</script>
+</body>
+</html>
